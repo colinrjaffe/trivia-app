@@ -76,9 +76,10 @@ getTriviaButton.addEventListener('click', () => {
             });
 
             answerButtons.forEach((button, i) => {
+                button.classList.remove('right-answer');
+                button.classList.remove('wrong-answer');
                 button.textContent = `${button.id}. ${choices[i].text}`;
                 button.style.display = 'block';
-                button.style.backgroundColor = 'white'
             })
         });
 })
@@ -91,14 +92,14 @@ function evaluateChoice (event) {
     // if it's correct,
     if (choices[button.id - 1].isCorrect) {
         //   make the button green
-        button.style.backgroundColor = 'darkgreen';
+        button.classList.add('right-answer');
         //   increment score
         score++;
         
         // else, they got it wrong (the ignorant fools)
     } else {
         //   make the button red
-        button.style.backgroundColor = 'darkred';
+        button.classList.add('wrong-answer');
     }
     
     // calculate average
